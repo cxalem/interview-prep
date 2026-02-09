@@ -1,7 +1,7 @@
 # Solana Senior Interview Prep
 
 A structured, progressive challenge set to prepare for senior SWE and Design Engineer
-roles in the Solana ecosystem (Phantom, Jupiter, Anza, Tensor, Marinade, etc.).
+roles in the Solana ecosystem.
 
 ## How to Use
 
