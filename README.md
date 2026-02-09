@@ -34,7 +34,7 @@ npm run typecheck
 
 ## Challenge Map
 
-### Phase 1: TypeScript Mastery — *AI Assistance OK*
+### Phase 1: TypeScript Mastery
 > Build your TypeScript muscle. These challenges focus on the type system and
 > patterns that senior engineers use daily.
 
@@ -46,7 +46,7 @@ npm run typecheck
 | 1.4 | Branded Types          | Nominal typing for Solana types    | 30min | Medium     |
 | 1.5 | Type-Safe API Client   | Inferred RPC client types          | 60min | Hard       |
 
-### Phase 2: Data Structures — *Reduce AI Assistance*
+### Phase 2: Data Structures
 > Implement core data structures from scratch. These appear directly in interviews
 > and are the building blocks of wallet infrastructure.
 
@@ -58,7 +58,7 @@ npm run typecheck
 | 2.4 | Trie Autocomplete      | Token search with frequency        | 45min | Medium     |
 | 2.5 | Concurrent Task Queue  | Rate-limited async with retry      | 60min | Hard       |
 
-### Phase 3: Algorithms — *Minimal AI Assistance*
+### Phase 3: Algorithms 
 > Algorithm challenges themed around real Solana/wallet problems.
 
 | #   | Challenge              | Key Concept                        | Time  | Difficulty |
@@ -69,7 +69,7 @@ npm run typecheck
 | 3.4 | Rate Limiter           | Token bucket, sliding window       | 40min | Medium     |
 | 3.5 | Optimistic Updates     | CRDT-like state with rollback      | 60min | Hard       |
 
-### Phase 4: React Patterns — *Start Going Solo*
+### Phase 4: React Patterns
 > These test the state logic behind React patterns — no DOM required.
 > The patterns here are what separate senior React engineers from mid-level.
 
@@ -81,7 +81,7 @@ npm run typecheck
 | 4.4 | State Machine          | FSM for transaction lifecycle      | 60min | Hard       |
 | 4.5 | Virtual List           | Windowing for large lists          | 60min | Hard       |
 
-### Phase 5: Solana Core — *Going Solo*
+### Phase 5: Solana Core
 > Deep Solana protocol knowledge. These challenges simulate what you'd build
 > inside a wallet or on-chain client.
 
@@ -93,7 +93,7 @@ npm run typecheck
 | 5.4 | PDA Derivation         | Program Derived Addresses          | 40min | Medium     |
 | 5.5 | Versioned Transactions | V0 messages & address lookup tables| 60min | Hard       |
 
-### Phase 6: Design Engineering — *Fully Solo*
+### Phase 6: Design Engineering
 > Build the state layer for real wallet UI components. These test your ability
 > to manage complex, interconnected state with good UX.
 
@@ -105,7 +105,7 @@ npm run typecheck
 | 6.4 | NFT Gallery            | Pagination, filter, search, select | 60min | Hard       |
 | 6.5 | Activity Feed          | Real-time + history + grouping     | 60min | Hard       |
 
-### Phase 7: System Design — *Fully Solo, Whiteboard Style*
+### Phase 7: System Design
 > No code — think architecture. Fill in the TEMPLATE.md for each challenge.
 > Practice explaining your design out loud as if you're in an interview.
 
