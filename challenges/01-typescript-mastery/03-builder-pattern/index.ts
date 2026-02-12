@@ -18,32 +18,33 @@ export interface TransactionInstruction {
   signers?: string[];
 }
 
-// TODO: Define a type that tracks which builder fields have been set.
-// Example approach: use a Record with boolean flags.
-//
-// type BuilderState = {
-//   programId: boolean;
-//   accounts: boolean;
-//   data: boolean;
-//   signers: boolean;
-// };
-//
-// type DefaultState = {
-//   programId: false;
-//   accounts: false;
-//   data: false;
-//   signers: false;
-// };
-//
-// type RequiredComplete = {
-//   programId: true;
-//   accounts: true;
-//   data: true;
-// };
+type BuilderState = {
+  programId: boolean;
+  accounts: boolean;
+  data: boolean;
+  signers: boolean;
+};
 
-// TODO: Define a conditional type or helper that checks if all required fields are set.
-// The build() method should only be available when programId, accounts, and data are true.
-// Signers is always optional.
+type DefaultState = {
+  programId: false;
+  accounts: false;
+  data: false;
+  signers: false;
+};
+
+type RequiredComplete = {
+  programId: true;
+  accounts: true;
+  data: true;
+};
+
+type AllRequiredSet<T extends BuilderState> = T extends RequiredComplete
+  ? true
+  : false;
+
+type SetField<S extends BuilderState, K extends keyof S> = {
+  [P in keyof S]: P extends K ? true : S[P];
+};
 
 // TODO: Implement the InstructionBuilder class.
 // It should be generic over a State parameter that tracks which fields are set.
@@ -56,35 +57,35 @@ export interface TransactionInstruction {
 // 1. Only be callable when the state satisfies the required fields
 // 2. Return a TransactionInstruction
 
-export class InstructionBuilder {
+export class InstructionBuilder<S extends BuilderState = DefaultState> {
   // TODO: Add private fields to store the instruction parts
-  // private _programId?: string;
-  // private _accounts?: AccountMeta[];
-  // private _data?: Buffer;
-  // private _signers?: string[];
+  private _programId?: string;
+  private _accounts?: AccountMeta[];
+  private _data?: Buffer;
+  private _signers?: string[];
 
   // TODO: Implement programId(id: string)
   // Should return a builder with programId marked as set in the type
-  programId(id: string): InstructionBuilder {
-    throw new Error("Not implemented");
+  programId(id: string): InstructionBuilder<SetField<S, "programId">> {
+    this._programId = id;
+    return this as any;
   }
 
-  // TODO: Implement accounts(accounts: AccountMeta[])
-  // Should return a builder with accounts marked as set in the type
-  accounts(accounts: AccountMeta[]): InstructionBuilder {
-    throw new Error("Not implemented");
+  accounts(
+    accounts: AccountMeta[],
+  ): InstructionBuilder<SetField<S, "accounts">> {
+    this._accounts = accounts;
+    return this as any;
   }
 
-  // TODO: Implement data(data: Buffer)
-  // Should return a builder with data marked as set in the type
-  data(data: Buffer): InstructionBuilder {
-    throw new Error("Not implemented");
+  data(data: Buffer): InstructionBuilder<SetField<S, "data">> {
+    this._data = data;
+    return this as any;
   }
 
-  // TODO: Implement signers(signers: string[])
-  // Should return a builder with signers marked as set in the type
-  signers(signers: string[]): InstructionBuilder {
-    throw new Error("Not implemented");
+  signers(signers: string[]): InstructionBuilder<SetField<S, "signers">> {
+    this._signers = signers;
+    return this as any;
   }
 
   // TODO: Implement build()
@@ -98,7 +99,16 @@ export class InstructionBuilder {
   // 4. Only add build() via conditional intersection types
   //
   // For now, this is a placeholder that always throws:
-  build(): TransactionInstruction {
-    throw new Error("Not implemented");
+  build(): AllRequiredSet<S> extends true ? TransactionInstruction : never {
+    if (!this._programId || !this._accounts || !this._data) {
+      throw new Error("Mising required fields");
+    }
+
+    return {
+      programId: this._programId,
+      accounts: this._accounts,
+      data: this._data,
+      signers: this._signers,
+    } as any;
   }
 }
